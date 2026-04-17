@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import FeaturedWork from "@/components/FeaturedWork";
 import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <FeaturedWork />
         <ContactForm />
       </main>
+      <Footer />
     </>
   );
 }
