@@ -34,16 +34,15 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo + Brand */}
+        {/* Brand */}
         <a href="#" className="flex items-center gap-3 group">
           <Image
-            src="/images/logo.png"
-            alt="Big Sky Development logo"
-            width={32}
-            height={32}
-            className="rounded-sm"
+            src="/images/logo-icon.png"
+            alt="Big Sky Development"
+            width={44}
+            height={38}
           />
-          <span className="hidden sm:block text-text font-semibold tracking-wide group-hover:text-primary transition-colors duration-200">
+          <span className="hidden sm:inline text-white font-semibold tracking-wide group-hover:text-primary transition-colors duration-200">
             Big Sky Development
           </span>
         </a>
