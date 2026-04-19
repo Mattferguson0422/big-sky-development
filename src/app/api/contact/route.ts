@@ -72,8 +72,8 @@ export async function POST(request: NextRequest) {
 
   try {
     const { error } = await resend.emails.send({
-      from: "Big Sky Development <noreply@bigskydevelopment.com>",
-      to: ["contact@bigskydevelopment.com"],
+      from: "Big Sky Development <noreply@golfforegroups.com>",
+      to: ["mattferguson0422@gmail.com"],
       replyTo: email,
       subject: `Contact Form: ${name}`,
       html: `
