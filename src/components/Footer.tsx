@@ -16,10 +16,10 @@ export default function Footer() {
           </span>
         </div>
         <a
-          href="mailto:contact@bigskydevelopment.com"
+          href="mailto:contact@bigskydevelopment.us"
           className="text-text-muted hover:text-primary text-sm transition-colors"
         >
-          contact@bigskydevelopment.com
+          contact@bigskydevelopment.us
         </a>
       </div>
     </footer>

@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a single-page portfolio site for Big Sky Development LLC at bigskydevelopment.com with a contact form powered by Resend.
+**Goal:** Build a single-page portfolio site for Big Sky Development LLC at bigskydevelopment.us with a contact form powered by Resend.
 
 **Architecture:** Next.js 15 App Router with Tailwind CSS v4, single page composed of section components (Nav, Hero, About, FeaturedWork, ContactForm, Footer). One API route handles contact form submissions via Resend. Deployed to Cloudflare Pages.
 
@@ -181,7 +181,7 @@ RESEND_API_KEY=
 
 ## Deployment
 - Target: Cloudflare Pages
-- Domain: bigskydevelopment.com
+- Domain: bigskydevelopment.us
 ```
 
 - [ ] **Step 8: Create a minimal page.tsx placeholder and verify dev server runs**
@@ -1030,8 +1030,8 @@ export async function POST(request: NextRequest) {
 
   try {
     const { error } = await resend.emails.send({
-      from: "Big Sky Development <noreply@bigskydevelopment.com>",
-      to: ["contact@bigskydevelopment.com"],
+      from: "Big Sky Development <noreply@bigskydevelopment.us>",
+      to: ["contact@bigskydevelopment.us"],
       replyTo: email,
       subject: `Contact Form: ${name}`,
       html: `
@@ -1121,10 +1121,10 @@ export default function Footer() {
           </span>
         </div>
         <a
-          href="mailto:contact@bigskydevelopment.com"
+          href="mailto:contact@bigskydevelopment.us"
           className="text-text-muted hover:text-primary text-sm transition-colors"
         >
-          contact@bigskydevelopment.com
+          contact@bigskydevelopment.us
         </a>
       </div>
     </footer>

@@ -16,4 +16,4 @@
 
 ## Deployment
 - Target: Cloudflare Pages
-- Domain: bigskydevelopment.com
+- Domain: bigskydevelopment.us
