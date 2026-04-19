@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { Resend } from "resend";
 import { NextRequest } from "next/server";
 
