@@ -3,8 +3,6 @@ export const runtime = "edge";
 import { Resend } from "resend";
 import { NextRequest } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const RATE_LIMIT_WINDOW = 60_000;
 const rateLimit = new Map<string, number>();
 
@@ -73,6 +71,7 @@ export async function POST(request: NextRequest) {
   const safeMessage = escapeHtml(message);
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
       from: "Big Sky Development <noreply@golfforegroups.com>",
       to: ["mattferguson0422@gmail.com"],
