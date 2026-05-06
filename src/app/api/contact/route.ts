@@ -1,6 +1,5 @@
 export const runtime = "edge";
 
-import { Resend } from "resend";
 import { NextRequest } from "next/server";
 
 const RATE_LIMIT_WINDOW = 60_000;
@@ -70,24 +69,40 @@ export async function POST(request: NextRequest) {
   const safeName = escapeHtml(name);
   const safeMessage = escapeHtml(message);
 
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not set");
+    return Response.json(
+      { error: "Email service is not configured." },
+      { status: 500 }
+    );
+  }
+
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    const { error } = await resend.emails.send({
-      from: "Big Sky Development <noreply@golfforegroups.com>",
-      to: ["mattferguson0422@gmail.com"],
-      replyTo: email,
-      subject: `Contact Form: ${name}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${safeName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${safeMessage.replace(/\n/g, "<br>")}</p>
-      `,
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Big Sky Development <noreply@golfforegroups.com>",
+        to: ["mattferguson0422@gmail.com"],
+        reply_to: email,
+        subject: `Contact Form: ${name}`,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${safeMessage.replace(/\n/g, "<br>")}</p>
+        `,
+      }),
     });
 
-    if (error) {
-      console.error("Resend error:", error);
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      console.error("Resend API error:", res.status, detail);
       return Response.json(
         { error: "Failed to send message. Please try again." },
         { status: 500 }
