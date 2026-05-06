@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import { NextRequest } from "next/server";
 
 const RATE_LIMIT_WINDOW = 60_000;
@@ -73,11 +71,10 @@ export async function POST(request: NextRequest) {
   if (!apiKey) {
     console.error("RESEND_API_KEY is not set");
     return Response.json(
-      { error: "Email service is not configured.", v: "fetch-rev-1" },
+      { error: "Email service is not configured." },
       { status: 500 }
     );
   }
-  console.log("contact route v=fetch-rev-1 invoked");
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
