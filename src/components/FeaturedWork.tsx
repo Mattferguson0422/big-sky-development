@@ -34,12 +34,25 @@ const projects: Project[] = [
     ],
     href: "https://socialmediasafety.education",
   },
+  {
+    name: "Kaizen Sustainability Solutions",
+    logo: "/images/kaizen-logo.svg",
+    description:
+      "The web presence for a sustainability consultancy that applies continuous improvement to waste and material systems. A focused single-page site with an animated kanji wordmark and a clear path to a first conversation.",
+    highlights: [
+      "Animated brand identity built in SVG",
+      "Continuous improvement loop diagram",
+      "Consultation request form",
+      "Fast, SEO-optimized Next.js build",
+    ],
+    href: "https://kaizensustainabilitysolutions.com",
+  },
 ];
 
 export default function FeaturedWork() {
   return (
     <section id="work" className="py-24 px-6 bg-surface">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
           Featured Work
         </h2>
@@ -47,7 +60,7 @@ export default function FeaturedWork() {
           Products we&apos;ve built and shipped
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
               key={project.name}
