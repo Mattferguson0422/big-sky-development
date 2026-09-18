@@ -84,8 +84,8 @@ export async function POST(request: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Big Sky Development <noreply@golfforegroups.com>",
-        to: ["mattferguson0422@gmail.com"],
+        from: "Big Sky Development <noreply@bigskydevelopment.us>",
+        to: ["matt@bigskydevelopment.us"],
         reply_to: email,
         subject: `Contact Form: ${name}`,
         html: `
